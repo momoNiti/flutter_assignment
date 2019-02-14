@@ -61,8 +61,13 @@ class LoginFormState extends State<LoginForm> {
                       ),
                     ),
                     FlatButton(
-                      child: Text("LOGIN"),
-                      textColor: Colors.green,
+                      padding: EdgeInsets.only(left: 170.0),
+                      child: Text(
+                        "Register New Account",
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                        ),
                     )
                   ],
                 ),
