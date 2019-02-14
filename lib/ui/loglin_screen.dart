@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/ui/register_screen.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -8,16 +9,14 @@ class LoginForm extends StatefulWidget {
 }
 
 class LoginFormState extends State<LoginForm> {
-  final _formKey = GlobalKey<FormState>();
+  final useridController = TextEditingController();
+  final passwordController = TextEditingController();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          title: Text("Log in"),
-        ),
+        key: _scaffoldKey,
         body: Form(
-          key: _formKey,
           child: ListView(
             children: <Widget>[
               Container(
@@ -32,17 +31,18 @@ class LoginFormState extends State<LoginForm> {
                 child: Column(
                   children: <Widget>[
                     TextField(
+                      controller: useridController,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.account_circle),
+                          prefixIcon: Icon(Icons.account_circle),
                           labelText: "User ID",
                           labelStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.grey,
                           )),
-                          
                     ),
                     SizedBox(height: 5.0),
                     TextField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock),
                         labelText: "Password",
@@ -57,17 +57,37 @@ class LoginFormState extends State<LoginForm> {
                     ButtonTheme(
                       minWidth: 350,
                       child: RaisedButton(
-                        child: Text("LOGIN"),
-                      ),
+                          child: Text("LOGIN"),
+                          onPressed: () {
+                            if (useridController.text.isEmpty ||
+                                passwordController.text.isEmpty) {
+                              final snackBar = SnackBar(
+                                content: Text("กรุณาระบุ user or password"),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            } else if (useridController != "admin" &&
+                                passwordController != "admin") {
+                              final snackBar = SnackBar(
+                                content: Text("user or password ไม่ถูกต้อง"),
+                              );
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            }
+                          }),
                     ),
                     FlatButton(
                       padding: EdgeInsets.only(left: 170.0),
                       child: Text(
                         "Register New Account",
                         style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.green,
                         ),
-                        ),
+                      ),
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterForm()),
+                        );
+                      },
                     )
                   ],
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/ui/loglin_screen.dart';
+import 'package:flutter_assignment/ui/register_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,9 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyHomePage(),
-      initialRoute: "/",
+      initialRoute: "/register",
       routes: {
         "/" :(context) => LoginForm(),
+        "/register" :(context) => RegisterForm(),
       },
     );
   }
