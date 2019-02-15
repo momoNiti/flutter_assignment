@@ -85,8 +85,10 @@ class LoginFormState extends State<LoginForm> {
 
                           }),
                     ),
-                    FlatButton(
-                      padding: EdgeInsets.only(left: 170.0),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: FlatButton(
+                      padding: EdgeInsets.all(0.0),
                       child: Text(
                         "Register New Account",
                         style: TextStyle(
@@ -99,7 +101,9 @@ class LoginFormState extends State<LoginForm> {
                           MaterialPageRoute(builder: (context) => RegisterForm()),
                         );
                       },
+                    ), 
                     )
+                    
                   ],
                 ),
               ),
