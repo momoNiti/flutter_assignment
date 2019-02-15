@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/ui/home_screen.dart';
 import 'package:flutter_assignment/ui/loglin_screen.dart';
 import 'package:flutter_assignment/ui/register_screen.dart';
 
@@ -15,23 +16,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyHomePage(),
-      initialRoute: "/register",
+      initialRoute: "/",
       routes: {
         "/" :(context) => LoginForm(),
         "/register" :(context) => RegisterForm(),
+        "/home" :(context) => HomePage(),
       },
     );
   }
 }
-// class MyHomePage extends StatelessWidget{
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Hello World"),
-//       ),
-//       body: Text("BODY"),
-//     );
-//   }
-
-// }

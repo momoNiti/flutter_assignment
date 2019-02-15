@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/main.dart';
+import 'package:flutter_assignment/ui/home_screen.dart';
 import 'package:flutter_assignment/ui/register_screen.dart';
 
 class LoginForm extends StatefulWidget {
@@ -34,7 +36,8 @@ class LoginFormState extends State<LoginForm> {
                       controller: useridController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle),
-                          labelText: "User ID",
+                          // labelText: "User ID",
+                          hintText: "User ID",
                           labelStyle: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.grey,
@@ -45,7 +48,8 @@ class LoginFormState extends State<LoginForm> {
                       controller: passwordController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock),
-                        labelText: "Password",
+                        // labelText: "Password",
+                        hintText: "Password",
                         labelStyle: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
@@ -65,13 +69,19 @@ class LoginFormState extends State<LoginForm> {
                                 content: Text("กรุณาระบุ user or password"),
                               );
                               _scaffoldKey.currentState.showSnackBar(snackBar);
-                            } else if (useridController != "admin" &&
-                                passwordController != "admin") {
+                            } else if (useridController.text == "admin" &&
+                                passwordController.text == "admin") {
                               final snackBar = SnackBar(
                                 content: Text("user or password ไม่ถูกต้อง"),
                               );
                               _scaffoldKey.currentState.showSnackBar(snackBar);
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => HomePage()),
+                                );
                             }
+
                           }),
                     ),
                     FlatButton(

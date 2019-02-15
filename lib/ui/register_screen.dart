@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/ui/loglin_screen.dart';
 
 class RegisterForm extends StatefulWidget {
   @override
@@ -8,9 +9,14 @@ class RegisterForm extends StatefulWidget {
 }
 
 class RegisterFormState extends State<RegisterForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final passwordCheckController = TextEditingController();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text("REGISTER"),
       ),
@@ -22,49 +28,46 @@ class RegisterFormState extends State<RegisterForm> {
               child: Column(
                 children: <Widget>[
                   TextField(
-                    // controller: useridController,
+                    controller: emailController,
+                    style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.blue,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue
-                        )
-                      )
-                    ),
+                        hintText: "email",
+                        // labelText: "email",
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Colors.blue,
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue))),
                   ),
                   SizedBox(height: 5.0),
                   TextField(
-                    // controller: passwordController,
+                    controller: passwordController,
+                    style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.blue,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue
-                        )
-                      )
-                    ),
+                        hintText: "password",
+                        // labelText: "password",
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.blue,
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue))),
                     obscureText: true,
                   ),
                   SizedBox(height: 5.0),
                   TextField(
-                    // controller: passwordController,
+                    controller: passwordCheckController,
+                    style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.blue,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.blue
-                        )
-                      )
-                    ),
+                        hintText: "password",
+                        // labelText: "password",
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.blue,
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue))),
                     obscureText: true,
                   ),
                   SizedBox(height: 6.50),
@@ -78,19 +81,24 @@ class RegisterFormState extends State<RegisterForm> {
                           ),
                         ),
                         onPressed: () {
-                          // if (useridController.text.isEmpty ||
-                          //     passwordController.text.isEmpty) {
-                          //   final snackBar = SnackBar(
-                          //     content: Text("กรุณาระบุ user or password"),
-                          //   );
-                          //   _scaffoldKey.currentState.showSnackBar(snackBar);
-                          // } else if (useridController != "admin" &&
-                          //     passwordController != "admin") {
-                          //   final snackBar = SnackBar(
-                          //     content: Text("user or password ไม่ถูกต้อง"),
-                          //   );
-                          //   _scaffoldKey.currentState.showSnackBar(snackBar);
-                          // }
+                          if (emailController.text.isEmpty ||
+                              passwordController.text.isEmpty || passwordCheckController.text.isEmpty) {
+                            final snackBar = SnackBar(
+                              content: Text("กรุณาระบุข้อมูลให้ครบถ้วน"),
+                            );
+                            _scaffoldKey.currentState.showSnackBar(snackBar);
+                          } else if (emailController.text == "admin") {
+                            final snackBar = SnackBar(
+                              content: Text("user นี้มีอยู่ในระบบแล้ว"),
+                            );
+                            _scaffoldKey.currentState.showSnackBar(snackBar);
+                          }
+                          else{
+                            Navigator.pop(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginForm()),
+                            );
+                          }
                         }),
                   ),
                 ],
