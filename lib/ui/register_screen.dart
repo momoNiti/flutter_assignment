@@ -32,6 +32,9 @@ class RegisterFormState extends State<RegisterForm> {
                     style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
                         hintText: "email",
+                        hintStyle: TextStyle(
+                          color: Colors.blue,
+                        ),
                         // labelText: "email",
                         prefixIcon: Icon(
                           Icons.email,
@@ -46,6 +49,9 @@ class RegisterFormState extends State<RegisterForm> {
                     style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
                         hintText: "password",
+                        hintStyle: TextStyle(
+                          color: Colors.blue,
+                        ),
                         // labelText: "password",
                         prefixIcon: Icon(
                           Icons.lock,
@@ -60,7 +66,10 @@ class RegisterFormState extends State<RegisterForm> {
                     controller: passwordCheckController,
                     style: TextStyle(color: Colors.blue),
                     decoration: InputDecoration(
-                        hintText: "password",
+                        hintText: "re-password",
+                        hintStyle: TextStyle(
+                          color: Colors.blue,
+                        ),
                         // labelText: "password",
                         prefixIcon: Icon(
                           Icons.lock,

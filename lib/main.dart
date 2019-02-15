@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyHomePage(),
-      initialRoute: "/",
+      initialRoute: "/register",
       routes: {
         "/" :(context) => LoginForm(),
         "/register" :(context) => RegisterForm(),
