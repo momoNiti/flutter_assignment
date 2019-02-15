@@ -60,6 +60,7 @@ class LoginFormState extends State<LoginForm> {
                     SizedBox(height: 6.50),
                     ButtonTheme(
                       minWidth: 350,
+                      buttonColor: Colors.grey,
                       child: RaisedButton(
                           child: Text("LOGIN"),
                           onPressed: () {
@@ -89,7 +90,7 @@ class LoginFormState extends State<LoginForm> {
                       child: Text(
                         "Register New Account",
                         style: TextStyle(
-                          color: Colors.green,
+                          color: Colors.teal[300],
                         ),
                       ),
                       onPressed: (){
